@@ -18,3 +18,5 @@ function digPow(numbers, p) {
 }
 
 console.log(digPow(46288, 3))
+
+// Task 6 kyi
