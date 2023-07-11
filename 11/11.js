@@ -25,3 +25,5 @@ function countSmileys(arr) {
 
 	return countSlimeOfArr
 }
+
+console.log(countSmileys([';]', ':[', ';*', ':$', ';-D']))
