@@ -14,16 +14,16 @@
 */
 
 export function parse(data: string): number[] {
-	const comandsArr = data.split('')
+	const commandsArr = data.split('')
 
 	let currentValue = 0
 	const finalArr: number[] = []
 
-	comandsArr.forEach(comand => {
-		if(comand === 'i') currentValue += 1
-		if(comand === 'd') currentValue -= 1
-		if(comand === 's') currentValue = Math.pow(currentValue, 2)
-		if(comand === 'o') finalArr.push(currentValue)
+	commandsArr.forEach(command => {
+		if(command === 'i') currentValue += 1
+		if(command === 'd') currentValue -= 1
+		if(command === 's') currentValue = Math.pow(currentValue, 2)
+		if(command === 'o') finalArr.push(currentValue)
 		console.log(currentValue)
 	})
 
