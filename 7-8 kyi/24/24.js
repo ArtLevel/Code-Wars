@@ -1,5 +1,5 @@
 function sumOfMinimums(arr) {
-	const minNumOfArrays = []
+	const minNumsOfArr = []
 
 	for(let i = 0; i < arr.length; i++) {
 		const nestedArr =	arr[i]
