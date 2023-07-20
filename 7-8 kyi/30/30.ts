@@ -7,3 +7,5 @@ export const reverseSeq = (n: number): number[] => {
 
 	return numbersArr
 }
+
+const hello = () => alert('hello')
