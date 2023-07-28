@@ -23,4 +23,4 @@ const findOdd = (numsArr) => {
 	return oddNum;
 };
 
-findOdd([0,1,0,1,0])
+console.log(findOdd([0,1,0,1,0]))
