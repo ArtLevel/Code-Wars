@@ -8,4 +8,5 @@ function toCamelCase(str) {
 	return symbolsArr.filter(el => el !== '-' && el !== '_').join('')
 }
 
+
 console.log(toCamelCase('the_stealth_warrior'))
