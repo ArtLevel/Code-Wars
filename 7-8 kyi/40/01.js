@@ -1,5 +1,6 @@
-function saleHotdogs(n){
-	if(n < 5) return n * 100
-	if(n >= 5 && n < 10) return n * 95
-	if(n >= 10) return n * 90
+function isPalindrome(line) {
+	if(typeof line === 'number') return line.toString().split('').reverse().join('') === line.toString()
+	return line.split('').reverse().join('') === line
 }
+
+console.log(isPalindrome('12321'))
