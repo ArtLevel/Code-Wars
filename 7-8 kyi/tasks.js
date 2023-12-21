@@ -139,6 +139,23 @@
 // 6 kyu
 // Stop gninnipS My sdroW!
 
-const spinWords = (string) =>  string.split(' ').map(el => el.length >= 5 ? el.split('').reverse().join('') : el).join(' ')
+// const spinWords = (string) =>  string.split(' ').map(el => el.length >= 5 ? el.split('').reverse().join('') : el).join(' ')
+//
+// console.log(spinWords("Just gniddik there is still one more"))
 
-console.log(spinWords("Just gniddik there is still one more"))
+// 6 kyu
+// Bit Counting
+
+const countBits = (n) => {
+	let binaryArr = []
+
+	for (let i = 0; n !== 0; i++) {
+		binaryArr.push(n % 2)
+		n = Math.floor(n / 2)
+		i++
+	}
+
+	return binaryArr.reduce((accum, num) => accum + num, 0)
+}
+
+console.log(countBits(89))
