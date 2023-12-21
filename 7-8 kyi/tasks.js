@@ -101,21 +101,37 @@
 //
 // console.log(findMissingLetter(['c','d','e','f','h','i']))
 
+// 6 kyu
+// Replace With Alphabet Position
 
-const alphabetPosition = (text) => {
-		const letters = [
-		'a', 'b', 'c', 'd', 'e',
-		'f', 'g', 'h', 'i', 'j',
-		'k', 'l', 'm', 'n', 'o', 'p',
-		'q', 'r', 's', 't', 'u',
-		'v', 'w', 'x', 'y', 'z'
-	]
+// const alphabetPosition = (text) => {
+// 		const letters = [
+// 		'a', 'b', 'c', 'd', 'e',
+// 		'f', 'g', 'h', 'i', 'j',
+// 		'k', 'l', 'm', 'n', 'o', 'p',
+// 		'q', 'r', 's', 't', 'u',
+// 		'v', 'w', 'x', 'y', 'z'
+// 	]
+//
+// 	return text.split('')
+// 		.map(el => el.toLowerCase())
+// 		.map(el => letters.indexOf(el) !== -1 ? letters.indexOf(el) + 1 : '')
+// 		.filter(el => el !== '')
+// 		.join(' ')
+// }
+//
+// console.log(alphabetPosition('The sunset sets at twelve o\' clock.'))
 
-	return text.split('')
-		.map(el => el.toLowerCase())
-		.map(el => letters.indexOf(el) !== -1 ? letters.indexOf(el) + 1 : '')
-		.filter(el => el !== '')
-		.join(' ')
+// 6 kyu
+// Array.diff
+
+const arrayDiff = (aArr, bArr) => {
+		return aArr.filter(el => {
+			for(let i = 0; bArr.length > i; i++) {
+				if(el === bArr[i]) return false
+			}
+			return true
+		})
 }
 
-console.log(alphabetPosition('The sunset sets at twelve o\' clock.'))
+console.log(arrayDiff([1,2,2,2,3],[2]))
