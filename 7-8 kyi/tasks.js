@@ -125,13 +125,20 @@
 // 6 kyu
 // Array.diff
 
-const arrayDiff = (aArr, bArr) => {
-		return aArr.filter(el => {
-			for(let i = 0; bArr.length > i; i++) {
-				if(el === bArr[i]) return false
-			}
-			return true
-		})
-}
+// const arrayDiff = (aArr, bArr) => {
+// 		return aArr.filter(el => {
+// 			for(let i = 0; bArr.length > i; i++) {
+// 				if(el === bArr[i]) return false
+// 			}
+// 			return true
+// 		})
+// }
+//
+// console.log(arrayDiff([1,2,2,2,3],[2]))
 
-console.log(arrayDiff([1,2,2,2,3],[2]))
+// 6 kyu
+// Stop gninnipS My sdroW!
+
+const spinWords = (string) =>  string.split(' ').map(el => el.length >= 5 ? el.split('').reverse().join('') : el).join(' ')
+
+console.log(spinWords("Just gniddik there is still one more"))
