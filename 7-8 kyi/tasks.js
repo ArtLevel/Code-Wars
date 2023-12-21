@@ -71,8 +71,39 @@
 // 6 kyu
 // Find the missing letter
 
-const findMissingLetter = (array) => {
-	const letters = [
+// const findMissingLetter = (array) => {
+// 	const letters = [
+// 		'a', 'b', 'c', 'd', 'e',
+// 		'f', 'g', 'h', 'i', 'j',
+// 		'k', 'l', 'm', 'n', 'o', 'p',
+// 		'q', 'r', 's', 't', 'u',
+// 		'v', 'w', 'x', 'y', 'z'
+// 	]
+//
+// 	let idTheFirstLetter
+// 	let count = 1
+// 	let result = ''
+//
+// 	array.map(el => el.toLowerCase()).forEach((el, i) => {
+// 		if(i === 0) idTheFirstLetter = letters.indexOf(el)
+//
+// 		if(i > 0) {
+// 			if(el === letters[idTheFirstLetter + count]) {
+// 				count += 1
+// 			} else {
+// 				result = letters[idTheFirstLetter + count]
+// 			}
+// 		}
+// 	})
+//
+// 	return array[0].toUpperCase() === array[0] ? result.toUpperCase() : result
+// }
+//
+// console.log(findMissingLetter(['c','d','e','f','h','i']))
+
+
+const alphabetPosition = (text) => {
+		const letters = [
 		'a', 'b', 'c', 'd', 'e',
 		'f', 'g', 'h', 'i', 'j',
 		'k', 'l', 'm', 'n', 'o', 'p',
@@ -80,23 +111,11 @@ const findMissingLetter = (array) => {
 		'v', 'w', 'x', 'y', 'z'
 	]
 
-	let idTheFirstLetter
-	let count = 1
-	let result = ''
-
-	array.map(el => el.toLowerCase()).forEach((el, i) => {
-		if(i === 0) idTheFirstLetter = letters.indexOf(el)
-
-		if(i > 0) {
-			if(el === letters[idTheFirstLetter + count]) {
-				count += 1
-			} else {
-				result = letters[idTheFirstLetter + count]
-			}
-		}
-	})
-
-	return array[0].toUpperCase() === array[0] ? result.toUpperCase() : result
+	return text.split('')
+		.map(el => el.toLowerCase())
+		.map(el => letters.indexOf(el) !== -1 ? letters.indexOf(el) + 1 : '')
+		.filter(el => el !== '')
+		.join(' ')
 }
 
-console.log(findMissingLetter(['c','d','e','f','h','i']))
+console.log(alphabetPosition('The sunset sets at twelve o\' clock.'))
