@@ -163,20 +163,36 @@
 // 6 kyu
 // Counting Duplicates
 
-const duplicateCount = (text) => {
-	const obj = {}
+// const duplicateCount = (text) => {
+// 	const obj = {}
+// 	let result = 0
+//
+// 	text.split('').map(el => el.toLowerCase()).forEach(el => {
+// 		if(obj[el] === undefined) obj[el] = 1
+// 		else obj[el] += 1
+// 	})
+//
+// 	for (const objElement in obj) {
+// 		if (obj[objElement] > 1) result += 1
+// 	}
+//
+// 	return result
+// }
+//
+// console.log(duplicateCount('abcddddaaa'))
+
+// 6 kyu Persistent Bugger.
+
+const persistence = (num) => {
 	let result = 0
 
-	text.split('').map(el => el.toLowerCase()).forEach(el => {
-		if(obj[el] === undefined) obj[el] = 1
-		else obj[el] += 1
-	})
-
-	for (const objElement in obj) {
-		if (obj[objElement] > 1) result += 1
+	while(String(num).length > 1) {
+		num = String(num).split('').map(Number).reduce((accum, num) => accum * num, 1)
+		result += 1
 	}
 
 	return result
 }
 
-console.log(duplicateCount('abcddddaaa'))
+console.log(persistence(4))
+
