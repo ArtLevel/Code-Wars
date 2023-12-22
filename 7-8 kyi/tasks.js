@@ -146,16 +146,37 @@
 // 6 kyu
 // Bit Counting
 
-const countBits = (n) => {
-	let binaryArr = []
+// const countBits = (n) => {
+// 	let binaryArr = []
+//
+// 	for (let i = 0; n !== 0; i++) {
+// 		binaryArr.push(n % 2)
+// 		n = Math.floor(n / 2)
+// 		i++
+// 	}
+//
+// 	return binaryArr.reduce((accum, num) => accum + num, 0)
+// }
+//
+// console.log(countBits(89))
 
-	for (let i = 0; n !== 0; i++) {
-		binaryArr.push(n % 2)
-		n = Math.floor(n / 2)
-		i++
+// 6 kyu
+// Counting Duplicates
+
+const duplicateCount = (text) => {
+	const obj = {}
+	let result = 0
+
+	text.split('').map(el => el.toLowerCase()).forEach(el => {
+		if(obj[el] === undefined) obj[el] = 1
+		else obj[el] += 1
+	})
+
+	for (const objElement in obj) {
+		if (obj[objElement] > 1) result += 1
 	}
 
-	return binaryArr.reduce((accum, num) => accum + num, 0)
+	return result
 }
 
-console.log(countBits(89))
+console.log(duplicateCount('abcddddaaa'))
