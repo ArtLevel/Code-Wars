@@ -202,19 +202,37 @@
 // 6 kyu
 // Duplicate Encoder
 
-const duplicateEncode = (word) => {
-	const arr = word.split('').map(el => el.toLowerCase()).map(el => ({count: 0, symbol: el}))
-	const symbolsArr = word.split('').map(el => el.toLowerCase())
-
-	arr.forEach(el => {
-		for (let i = 0; i < symbolsArr.length; i++) {
-		  if(el.symbol === symbolsArr[i]) el.count += 1
-		}
-	})
-
-	return arr.map(el => el.count > 1 ? ')' : '(').join('')
-}
-
-console.log(duplicateEncode('Supralapsarian')) // (()))())())()(
+// const duplicateEncode = (word) => {
+// 	const arr = word.split('').map(el => el.toLowerCase()).map(el => ({count: 0, symbol: el}))
+// 	const symbolsArr = word.split('').map(el => el.toLowerCase())
+//
+// 	arr.forEach(el => {
+// 		for (let i = 0; i < symbolsArr.length; i++) {
+// 		  if(el.symbol === symbolsArr[i]) el.count += 1
+// 		}
+// 	})
+//
+// 	return arr.map(el => el.count > 1 ? ')' : '(').join('')
+// }
+//
+// console.log(duplicateEncode('Supralapsarian')) // (()))())())()(
 
 // )()))()))))()(
+
+// 6 kyu
+// Find The Parity Outlier
+
+const findOutlier = (integers) => {
+	let flag = {odd: 0, even: 0}
+
+	integers.forEach(el => {
+		if(el % 2 !== 0) flag.even += 1
+		else flag.odd += 1
+	})
+
+	if(flag.odd > flag.even) return integers.find((el) => el % 2 !== 0)
+	else return integers.find((el) => el % 2 === 0)
+}
+
+console.log(findOutlier([0, 1, 2])) // odd
+console.log(findOutlier([1, 2, 3])) // even
