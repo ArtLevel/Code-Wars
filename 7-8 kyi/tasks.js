@@ -183,16 +183,38 @@
 
 // 6 kyu Persistent Bugger.
 
-const persistence = (num) => {
-	let result = 0
+// const persistence = (num) => {
+// 	let result = 0
+//
+// 	while(String(num).length > 1) {
+// 		num = String(num).split('').map(Number).reduce((accum, num) => accum * num, 1)
+// 		result += 1
+// 	}
+//
+// 	return result
+// }
+//
+// console.log(persistence(4))
+//
 
-	while(String(num).length > 1) {
-		num = String(num).split('').map(Number).reduce((accum, num) => accum * num, 1)
-		result += 1
-	}
 
-	return result
+
+// 6 kyu
+// Duplicate Encoder
+
+const duplicateEncode = (word) => {
+	const arr = word.split('').map(el => el.toLowerCase()).map(el => ({count: 0, symbol: el}))
+	const symbolsArr = word.split('').map(el => el.toLowerCase())
+
+	arr.forEach(el => {
+		for (let i = 0; i < symbolsArr.length; i++) {
+		  if(el.symbol === symbolsArr[i]) el.count += 1
+		}
+	})
+
+	return arr.map(el => el.count > 1 ? ')' : '(').join('')
 }
 
-console.log(persistence(4))
+console.log(duplicateEncode('Supralapsarian')) // (()))())())()(
 
+// )()))()))))()(
