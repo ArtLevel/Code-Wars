@@ -237,24 +237,39 @@
 // console.log(findOutlier([0, 1, 2])) // odd
 // console.log(findOutlier([1, 2, 3])) // even
 
+// 6 kyu
+// Detect Pangram
+// const isPangram = (string) => {
+// 	const letters = [
+// 		'a', 'b', 'c', 'd', 'e',
+// 		'f', 'g', 'h', 'i', 'j',
+// 		'k', 'l', 'm', 'n', 'o', 'p',
+// 		'q', 'r', 's', 't', 'u',
+// 		'v', 'w', 'x', 'y', 'z'
+// 	]
+// 	let result = true
 //
-const isPangram = (string) => {
-	const letters = [
-		'a', 'b', 'c', 'd', 'e',
-		'f', 'g', 'h', 'i', 'j',
-		'k', 'l', 'm', 'n', 'o', 'p',
-		'q', 'r', 's', 't', 'u',
-		'v', 'w', 'x', 'y', 'z'
-	]
-	let result = true
+// 	const filteredArr = string.split('').map(el => el.toLowerCase()).filter(el => el !== '.' && el !== ' ')
+//
+// 	for (let i = 0; i < letters.length; i++) {
+// 	if(!filteredArr.includes(letters[i])) result = false
+// 	}
+//
+// 	return result
+// }
+//
+// console.log(isPangram('Cwm fjord bank glyphs vext quiz'))
 
-	const filteredArr = string.split('').map(el => el.toLowerCase()).filter(el => el !== '.' && el !== ' ')
+// 6 kyu
+// Does my number look big in this?
 
-	for (let i = 0; i < letters.length; i++) {
-	if(!filteredArr.includes(letters[i])) result = false
-	}
+const narcissistic = (value) => {
+	const valueOfString = String(value)
+	const result = valueOfString.split('')
+																			.map(el => Math.pow(Number(el), valueOfString.length))
+																			.reduce((accum, num) => accum + num, 0)
 
-	return result
+	return result === value
 }
 
-console.log(isPangram('Cwm fjord bank glyphs vext quiz'))
+console.log(narcissistic(153))
