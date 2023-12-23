@@ -263,13 +263,42 @@
 // 6 kyu
 // Does my number look big in this?
 
-const narcissistic = (value) => {
-	const valueOfString = String(value)
-	const result = valueOfString.split('')
-																			.map(el => Math.pow(Number(el), valueOfString.length))
-																			.reduce((accum, num) => accum + num, 0)
+// const narcissistic = (value) => {
+// 	const valueOfString = String(value)
+// 	const result = valueOfString.split('')
+// 																			.map(el => Math.pow(Number(el), valueOfString.length))
+// 																			.reduce((accum, num) => accum + num, 0)
+//
+// 	return result === value
+// }
+//
+// console.log(narcissistic(153))
 
-	return result === value
+
+// 6 kyu
+// Your order, please
+
+const order = (words) => {
+	const wordsArr = words.split(' ')
+
+	return wordsArr.sort((el, nextEl) => {
+		let numOfEl
+		let numOfNextEl
+
+		for (let i = 0; i < el.length; i++) {
+			if(Number(el[i])) {
+				numOfEl = el[i]
+			}
+		}
+
+		for (let i = 0; i < nextEl.length; i++) {
+			if(Number(nextEl[i])) {
+				numOfNextEl = nextEl[i]
+			}
+		}
+
+		return numOfEl - numOfNextEl
+	}).join(' ')
 }
 
-console.log(narcissistic(153))
+console.log(order('is2 Thi1s T4est 3a'))
