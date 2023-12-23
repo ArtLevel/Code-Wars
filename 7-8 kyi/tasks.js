@@ -222,17 +222,39 @@
 // 6 kyu
 // Find The Parity Outlier
 
-const findOutlier = (integers) => {
-	let flag = {odd: 0, even: 0}
+// const findOutlier = (integers) => {
+// 	let flag = {odd: 0, even: 0}
+//
+// 	integers.forEach(el => {
+// 		if(el % 2 !== 0) flag.even += 1
+// 		else flag.odd += 1
+// 	})
+//
+// 	if(flag.odd > flag.even) return integers.find((el) => el % 2 !== 0)
+// 	else return integers.find((el) => el % 2 === 0)
+// }
+//
+// console.log(findOutlier([0, 1, 2])) // odd
+// console.log(findOutlier([1, 2, 3])) // even
 
-	integers.forEach(el => {
-		if(el % 2 !== 0) flag.even += 1
-		else flag.odd += 1
-	})
+//
+const isPangram = (string) => {
+	const letters = [
+		'a', 'b', 'c', 'd', 'e',
+		'f', 'g', 'h', 'i', 'j',
+		'k', 'l', 'm', 'n', 'o', 'p',
+		'q', 'r', 's', 't', 'u',
+		'v', 'w', 'x', 'y', 'z'
+	]
+	let result = true
 
-	if(flag.odd > flag.even) return integers.find((el) => el % 2 !== 0)
-	else return integers.find((el) => el % 2 === 0)
+	const filteredArr = string.split('').map(el => el.toLowerCase()).filter(el => el !== '.' && el !== ' ')
+
+	for (let i = 0; i < letters.length; i++) {
+	if(!filteredArr.includes(letters[i])) result = false
+	}
+
+	return result
 }
 
-console.log(findOutlier([0, 1, 2])) // odd
-console.log(findOutlier([1, 2, 3])) // even
+console.log(isPangram('Cwm fjord bank glyphs vext quiz'))
