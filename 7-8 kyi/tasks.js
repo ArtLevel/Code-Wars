@@ -303,16 +303,37 @@
 //
 // console.log(order('is2 Thi1s T4est 3a'))
 
-//
 
-const isPrime = (num) => {
-	if(num > 1) return false
-	let flag = true
+// 6 kyu
+// Build Tower
 
-	for (let i = 0; i < num; i++) {
-				num = num / i
+const towerBuilder = (nFloors) => {
+	let newArr = []
+	let spaceStr = ''
+
+	for (let i = 0; i < nFloors / 2; i++) spaceStr += ' '
+
+	for (let i = 0; i < nFloors * 2; i += 2) {
+		let str = '*'
+
+		for (let j = 0; j < i; j++) str += '*'
+
+		newArr.push(str)
 	}
 
-	return flag
+
+
+	return newArr.map((el, i) => {
+		let newEl = el
+
+		console.log(i, nFloors)
+		for (let j = 1; j < nFloors - i; j++) {
+			newEl += ' '
+			newEl = ' ' + newEl
+		}
+
+		return newEl
+	})
 }
 
+console.log(towerBuilder(10))
