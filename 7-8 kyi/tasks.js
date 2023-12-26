@@ -307,33 +307,78 @@
 // 6 kyu
 // Build Tower
 
-const towerBuilder = (nFloors) => {
-	let newArr = []
-	let spaceStr = ''
+// const towerBuilder = (nFloors) => {
+// 	let newArr = []
+// 	let spaceStr = ''
+//
+// 	for (let i = 0; i < nFloors / 2; i++) spaceStr += ' '
+//
+// 	for (let i = 0; i < nFloors * 2; i += 2) {
+// 		let str = '*'
+//
+// 		for (let j = 0; j < i; j++) str += '*'
+//
+// 		newArr.push(str)
+// 	}
+//
+// 	return newArr.map((el, i) => {
+// 		let newEl = el
+//
+// 		for (let j = 1; j < nFloors - i; j++) {
+// 			newEl += ' '
+// 			newEl = ' ' + newEl
+// 		}
+//
+// 		return newEl
+// 	})
+// }
+//
+// console.log(towerBuilder(1000))
 
-	for (let i = 0; i < nFloors / 2; i++) spaceStr += ' '
-
-	for (let i = 0; i < nFloors * 2; i += 2) {
-		let str = '*'
-
-		for (let j = 0; j < i; j++) str += '*'
-
-		newArr.push(str)
-	}
+//
+// 6 kyu
+// Highest Scoring Word
 
 
+function high(str){
+	const letters = [
+		{ letter: 'a', point: 1 },
+		{ letter: 'b', point: 2 },
+		{ letter: 'c', point: 3 },
+		{ letter: 'd', point: 4 },
+		{ letter: 'e', point: 5 },
+		{ letter: 'f', point: 6 },
+		{ letter: 'g', point: 7 },
+		{ letter: 'h', point: 8 },
+		{ letter: 'i', point: 9 },
+		{ letter: 'j', point: 10 },
+		{ letter: 'k', point: 11 },
+		{ letter: 'l', point: 12 },
+		{ letter: 'm', point: 13 },
+		{ letter: 'n', point: 14 },
+		{ letter: 'o', point: 15 },
+		{ letter: 'p', point: 16 },
+		{ letter: 'q', point: 17 },
+		{ letter: 'r', point: 18 },
+		{ letter: 's', point: 19 },
+		{ letter: 't', point: 20 },
+		{ letter: 'u', point: 21 },
+		{ letter: 'v', point: 22 },
+		{ letter: 'w', point: 23 },
+		{ letter: 'x', point: 24 },
+		{ letter: 'y', point: 25 },
+		{ letter: 'z', point: 26 }
+	]
 
-	return newArr.map((el, i) => {
-		let newEl = el
-
-		console.log(i, nFloors)
-		for (let j = 1; j < nFloors - i; j++) {
-			newEl += ' '
-			newEl = ' ' + newEl
-		}
-
-		return newEl
-	})
+	return str.split(' ')
+		.map(str =>  ({
+				points: str
+					.split('')
+					.map(el => letters.find(obj => obj.letter === el))
+					.reduce((accum, obj) => accum + obj.point, 0),
+				str
+			})
+		).sort((el, nextEl) => nextEl.points - el.points)[0].str
 }
 
-console.log(towerBuilder(10))
+console.log(high('man i need a taxi up to ubud'))
