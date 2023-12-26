@@ -278,27 +278,41 @@
 // 6 kyu
 // Your order, please
 
-const order = (words) => {
-	const wordsArr = words.split(' ')
+// const order = (words) => {
+// 	const wordsArr = words.split(' ')
+//
+// 	return wordsArr.sort((el, nextEl) => {
+// 		let numOfEl
+// 		let numOfNextEl
+//
+// 		for (let i = 0; i < el.length; i++) {
+// 			if(Number(el[i])) {
+// 				numOfEl = el[i]
+// 			}
+// 		}
+//
+// 		for (let i = 0; i < nextEl.length; i++) {
+// 			if(Number(nextEl[i])) {
+// 				numOfNextEl = nextEl[i]
+// 			}
+// 		}
+//
+// 		return numOfEl - numOfNextEl
+// 	}).join(' ')
+// }
+//
+// console.log(order('is2 Thi1s T4est 3a'))
 
-	return wordsArr.sort((el, nextEl) => {
-		let numOfEl
-		let numOfNextEl
+//
 
-		for (let i = 0; i < el.length; i++) {
-			if(Number(el[i])) {
-				numOfEl = el[i]
-			}
-		}
+const isPrime = (num) => {
+	if(num > 1) return false
+	let flag = true
 
-		for (let i = 0; i < nextEl.length; i++) {
-			if(Number(nextEl[i])) {
-				numOfNextEl = nextEl[i]
-			}
-		}
+	for (let i = 0; i < num; i++) {
+				num = num / i
+	}
 
-		return numOfEl - numOfNextEl
-	}).join(' ')
+	return flag
 }
 
-console.log(order('is2 Thi1s T4est 3a'))
