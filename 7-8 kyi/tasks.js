@@ -340,45 +340,75 @@
 // Highest Scoring Word
 
 
-function high(str){
-	const letters = [
-		{ letter: 'a', point: 1 },
-		{ letter: 'b', point: 2 },
-		{ letter: 'c', point: 3 },
-		{ letter: 'd', point: 4 },
-		{ letter: 'e', point: 5 },
-		{ letter: 'f', point: 6 },
-		{ letter: 'g', point: 7 },
-		{ letter: 'h', point: 8 },
-		{ letter: 'i', point: 9 },
-		{ letter: 'j', point: 10 },
-		{ letter: 'k', point: 11 },
-		{ letter: 'l', point: 12 },
-		{ letter: 'm', point: 13 },
-		{ letter: 'n', point: 14 },
-		{ letter: 'o', point: 15 },
-		{ letter: 'p', point: 16 },
-		{ letter: 'q', point: 17 },
-		{ letter: 'r', point: 18 },
-		{ letter: 's', point: 19 },
-		{ letter: 't', point: 20 },
-		{ letter: 'u', point: 21 },
-		{ letter: 'v', point: 22 },
-		{ letter: 'w', point: 23 },
-		{ letter: 'x', point: 24 },
-		{ letter: 'y', point: 25 },
-		{ letter: 'z', point: 26 }
-	]
+// function high(str){
+// 	const letters = [
+// 		{ letter: 'a', point: 1 },
+// 		{ letter: 'b', point: 2 },
+// 		{ letter: 'c', point: 3 },
+// 		{ letter: 'd', point: 4 },
+// 		{ letter: 'e', point: 5 },
+// 		{ letter: 'f', point: 6 },
+// 		{ letter: 'g', point: 7 },
+// 		{ letter: 'h', point: 8 },
+// 		{ letter: 'i', point: 9 },
+// 		{ letter: 'j', point: 10 },
+// 		{ letter: 'k', point: 11 },
+// 		{ letter: 'l', point: 12 },
+// 		{ letter: 'm', point: 13 },
+// 		{ letter: 'n', point: 14 },
+// 		{ letter: 'o', point: 15 },
+// 		{ letter: 'p', point: 16 },
+// 		{ letter: 'q', point: 17 },
+// 		{ letter: 'r', point: 18 },
+// 		{ letter: 's', point: 19 },
+// 		{ letter: 't', point: 20 },
+// 		{ letter: 'u', point: 21 },
+// 		{ letter: 'v', point: 22 },
+// 		{ letter: 'w', point: 23 },
+// 		{ letter: 'x', point: 24 },
+// 		{ letter: 'y', point: 25 },
+// 		{ letter: 'z', point: 26 }
+// 	]
+//
+// 	return str.split(' ')
+// 		.map(str =>  ({
+// 				points: str
+// 					.split('')
+// 					.map(el => letters.find(obj => obj.letter === el))
+// 					.reduce((accum, obj) => accum + obj.point, 0),
+// 				str
+// 			})
+// 		).sort((el, nextEl) => nextEl.points - el.points)[0].str
+// }
+//
+// console.log(high('man i need a taxi up to ubud'))
+//
 
-	return str.split(' ')
-		.map(str =>  ({
-				points: str
-					.split('')
-					.map(el => letters.find(obj => obj.letter === el))
-					.reduce((accum, obj) => accum + obj.point, 0),
-				str
-			})
-		).sort((el, nextEl) => nextEl.points - el.points)[0].str
+
+const validBraces = (braces) => {
+	const bracesObj = {
+		'circle': {leftBraces: 0, rightBraces: 0},
+		'squad': {leftBraces: 0, rightBraces: 0},
+		'mustache': {leftBraces: 0, rightBraces: 0}
+	}
+	let result = true
+
+	braces.split('').forEach(el => {
+		if(el === '(') bracesObj.circle.leftBraces === 0 ? bracesObj.circle.leftBraces = 1 : bracesObj.circle.leftBraces += 1
+		if(el === ')') bracesObj.circle.rightBraces === 0 ? bracesObj.circle.rightBraces = 1 : bracesObj.circle.rightBraces += 1
+		if(el === '[') bracesObj.squad.leftBraces === 0 ? bracesObj.squad.leftBraces = 1 : bracesObj.squad.leftBraces += 1
+		if(el === ']') bracesObj.squad.rightBraces === 0 ? bracesObj.squad.rightBraces = 1 : bracesObj.squad.rightBraces += 1
+		if(el === '{') bracesObj.mustache.leftBraces === 0 ? bracesObj.mustache.leftBraces = 1 : bracesObj.mustache.leftBraces += 1
+		if(el === '}') bracesObj.mustache.rightBraces === 0 ? bracesObj.mustache.rightBraces = 1 : bracesObj.mustache.rightBraces += 1
+	})
+
+	for (const bracesObjKey in bracesObj) {
+		if(bracesObj[bracesObjKey].leftBraces - bracesObj[bracesObjKey].rightBraces !== 0) {
+			result = false
+		}
+	}
+
+	return result
 }
 
-console.log(high('man i need a taxi up to ubud'))
+console.log(validBraces('[(])'))
