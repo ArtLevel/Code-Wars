@@ -384,31 +384,20 @@
 // console.log(high('man i need a taxi up to ubud'))
 //
 
+const twoSum = (numbers, target) => {
+	let result = []
 
-const validBraces = (braces) => {
-	const bracesObj = {
-		'circle': {leftBraces: 0, rightBraces: 0},
-		'squad': {leftBraces: 0, rightBraces: 0},
-		'mustache': {leftBraces: 0, rightBraces: 0}
-	}
-	let result = true
-
-	braces.split('').forEach(el => {
-		if(el === '(') bracesObj.circle.leftBraces === 0 ? bracesObj.circle.leftBraces = 1 : bracesObj.circle.leftBraces += 1
-		if(el === ')') bracesObj.circle.rightBraces === 0 ? bracesObj.circle.rightBraces = 1 : bracesObj.circle.rightBraces += 1
-		if(el === '[') bracesObj.squad.leftBraces === 0 ? bracesObj.squad.leftBraces = 1 : bracesObj.squad.leftBraces += 1
-		if(el === ']') bracesObj.squad.rightBraces === 0 ? bracesObj.squad.rightBraces = 1 : bracesObj.squad.rightBraces += 1
-		if(el === '{') bracesObj.mustache.leftBraces === 0 ? bracesObj.mustache.leftBraces = 1 : bracesObj.mustache.leftBraces += 1
-		if(el === '}') bracesObj.mustache.rightBraces === 0 ? bracesObj.mustache.rightBraces = 1 : bracesObj.mustache.rightBraces += 1
-	})
-
-	for (const bracesObjKey in bracesObj) {
-		if(bracesObj[bracesObjKey].leftBraces - bracesObj[bracesObjKey].rightBraces !== 0) {
-			result = false
+	for (let i = 0; i < numbers.length; i++) {
+		for (let j = 1; j < numbers.length; j++) {
+			if(numbers[i] + numbers[j] === target) {
+				result = [i, j]
+				return result
+			}
 		}
 	}
 
 	return result
 }
 
-console.log(validBraces('[(])'))
+// console.log(twoSum([ 1, 2, 3 ], 4))
+console.log(twoSum([ 2, 2, 3 ], 4))
