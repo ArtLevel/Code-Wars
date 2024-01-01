@@ -384,20 +384,39 @@
 // console.log(high('man i need a taxi up to ubud'))
 //
 
-const twoSum = (numbers, target) => {
-	let result = []
+// 6 kyu
+// Two Sum
 
-	for (let i = 0; i < numbers.length; i++) {
-		for (let j = 1; j < numbers.length; j++) {
-			if(numbers[i] + numbers[j] === target) {
-				result = [i, j]
-				return result
-			}
-		}
+// const twoSum = (numbers, target) => {
+// 	let result = []
+//
+// 	for (let i = 0; i < numbers.length; i++) {
+// 		for (let j = 1; j < numbers.length; j++) {
+// 			if(numbers[i] + numbers[j] === target) {
+// 				result = [i, j]
+// 				return result
+// 			}
+// 		}
+// 	}
+//
+// 	return result
+// }
+//
+// // console.log(twoSum([ 1, 2, 3 ], 4))
+// console.log(twoSum([ 2, 2, 3 ], 4))
+
+// A: От 1 до n
+//
+// Дано натуральное число
+// Выведите все числа от 1 до
+
+const log = (n) => {
+	if(n > 1) {
+		console.log(n)
+		return log(n - 1)
+	} else {
+		return n
 	}
-
-	return result
 }
 
-// console.log(twoSum([ 1, 2, 3 ], 4))
-console.log(twoSum([ 2, 2, 3 ], 4))
+console.log(log(5))
