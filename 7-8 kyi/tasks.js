@@ -410,13 +410,29 @@
 // Дано натуральное число
 // Выведите все числа от 1 до
 
-const log = (n) => {
-	if(n > 1) {
-		console.log(n)
-		return log(n - 1)
+// const log = (n) => {
+// 	if(n > 1) {
+// 		console.log(n)
+// 		return log(n - 1)
+// 	} else {
+// 		return n
+// 	}
+// }
+//
+// console.log(log(5))
+
+
+// B: От A до B
+// Даны два целых числа A и В (каждое в отдельной строке). Выведите все числа от A до B включительно, в порядке возрастания,
+// если A < B, или в порядке убывания в противном случае
+
+const log = (a, b) => {
+	if (b > a) {
+		console.log(b)
+		return log(a, b - 1)
 	} else {
-		return n
+		return a
 	}
 }
 
-console.log(log(5))
+console.log(log(5, 9500))
