@@ -89,9 +89,19 @@ const myNumbers = [3, 5, -4, 8, 11, 1, -1, 6];
 const sum = 10;
 
 
+function twoNumbers(numbers, sum) {
+  let result = []
 
+  numbers.forEach(el => {
+    for (let i = 0; i < numbers.length; i++) {
+      if(el + numbers[i] === sum) result = [el, numbers[i]]
+    }
+  })
 
+  return result
+}
 
+console.log(twoNumbers(myNumbers, sum))
 
 
 
@@ -104,8 +114,11 @@ const friends = [
   { name: 'anna', pizzas: ['fish'] }
 ];
 
-
+const pizzas =friends.map(el => el.pizzas)
+console.log(pizzas)
 
 // 6. Записать строку (символы строки) в обратном порядке (2 способа)
 // pizza => azzip
 const myStr = 'pizza';
+
+console.log(myStr.split('').reverse().join(''))
