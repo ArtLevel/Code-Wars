@@ -51,14 +51,28 @@ console.log(newArr)
 //   '24': [{ name: 'mike', age: 24 }],
 //   '18': [{ name: 'stas', age: 18 }],
 // }
+
 const students = [
   { name: 'alex', age: 20 },
   { name: 'mike', age: 24 },
   { name: 'masha', age: 20 },
   { name: 'stas', age: 18 },
-];
+]
 
+function group(arr) {
+  const obj = {}
 
+  arr.forEach(el => {
+    const stringEl = String(el.age)
+
+    if(obj[stringEl] === undefined) obj[stringEl] = [el]
+    else obj[stringEl].push(el)
+  })
+
+  return obj
+}
+
+console.log(group(students))
 
 
 
