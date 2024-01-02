@@ -426,13 +426,125 @@
 // Даны два целых числа A и В (каждое в отдельной строке). Выведите все числа от A до B включительно, в порядке возрастания,
 // если A < B, или в порядке убывания в противном случае
 
-const log = (a, b) => {
-	if (b > a) {
-		console.log(b)
-		return log(a, b - 1)
-	} else {
-		return a
-	}
+// const log = (a, b) => {
+// 	if (b > a) {
+// 		console.log(b)
+// 		return log(a, b - 1)
+// 	} else {
+// 		return a
+// 	}
+// }
+//
+// console.log(log(5, 9500))
+
+// const numbers = [1, 45, 66, 2, 4, 6, -2, -10, -100, 100]
+//
+// let minValue = numbers[0]
+//
+// for (let i = 0; i < numbers.length; i++) {
+// 	if (numbers[i] < minValue) {
+// 		minValue = numbers[i]
+// 	}
+// }
+//
+// console.log(minValue)
+
+// generators
+
+// function* foo() {
+//  yield
+//
+// // return {
+// //  value: value,
+// //  done: true/false
+// // }
+// }
+
+// function* generateSalaryWithBonus(salary) {
+//   console.log('start generation function')
+//   // const a = yield salary + (salary / 100) * 15
+//   // console.log(a)
+//   // return yield
+//   // yield salary + (salary / 100) * 20
+//   // yield salary + (salary / 100) * 25
+//
+//   yield salary + (salary / 100) * 15 // STOP 15
+//   console.log('generation function after firs yield')
+//   yield salary + (salary / 100) * 20 // 2 STOP
+//   console.log('generation function after firs yield')
+//
+//   // yield salary + (salary / 100) * 30
+//   // yield salary + (salary / 100) * 35
+//   // console.log('after yield')
+// }
+//
+// const generator = generateSalaryWithBonus(2000)
+//
+// console.log(generator.next())
+// console.log(generator.next(15))
+// console.log(generator.next())
+// console.log(generator.next())
+// console.log(generator.next())
+// console.log(generator.next())
+// console.log(generator.next())
+
+// generator
+
+function* generateRandom() {
+  // while (true) {
+  //   const random = yield Math.floor(Math.random() * 1000)
+  //   // yield random
+  // }
+  yield 1
+  yield 2
+  yield 3
 }
 
-console.log(log(5, 9500))
+function* multipleValues() {
+  yield* generateRandom ()
+  yield* generateRandom ()
+  yield* generateRandom ()
+}
+
+const random = multipleValues()
+
+console.log(random.next().value)
+console.log(random.next().value)
+console.log(random.next().value)
+console.log(random.next().value)
+console.log(random.next().value)
+console.log(random.next().value)
+
+// console.log(random2.next().value)
+// console.log(random2.next().value)
+// console.log(random2.next().value)
+
+const foo = async () => {
+  const dataFromYahoo = await fetch('https://yahoo.com/?query=js')
+  console.log('dataFromYahoo', dataFromYahoo.url)
+}
+
+foo()
+
+const foo2 = newAsync(function*(){
+  const dataFromYahoo = yield fetch('https://yahoo.com/?query=js')
+  console.log('dataFromYahoo', dataFromYahoo.url)
+})
+
+function newAsync(generationFunction) {
+  return function() {
+    const generator = generationFunction()
+
+    function resolve(next) {
+      if(next.done) {
+        return Promise.resolve(next.value)
+      }
+
+      return Promise.resolve(next.value).then(res => {
+        return resolve(generator.next(res))
+      })
+    }
+
+    return resolve(generator.next)
+  }
+}
