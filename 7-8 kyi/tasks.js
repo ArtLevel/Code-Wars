@@ -490,61 +490,85 @@
 
 // generator
 
-function* generateRandom() {
-  // while (true) {
-  //   const random = yield Math.floor(Math.random() * 1000)
-  //   // yield random
-  // }
-  yield 1
-  yield 2
-  yield 3
-}
-
-function* multipleValues() {
-  yield* generateRandom ()
-  yield* generateRandom ()
-  yield* generateRandom ()
-}
-
-const random = multipleValues()
-
-console.log(random.next().value)
-console.log(random.next().value)
-console.log(random.next().value)
-console.log(random.next().value)
-console.log(random.next().value)
-console.log(random.next().value)
+// function* generateRandom() {
+//   // while (true) {
+//   //   const random = yield Math.floor(Math.random() * 1000)
+//   //   // yield random
+//   // }
+//   yield 1
+//   yield 2
+//   yield 3
+// }
+//
+// function* multipleValues() {
+//   yield* generateRandom ()
+//   yield* generateRandom ()
+//   yield* generateRandom ()
+// }
+//
+// const random = multipleValues()
+//
+// console.log(random.next().value)
+// console.log(random.next().value)
+// console.log(random.next().value)
+// console.log(random.next().value)
+// console.log(random.next().value)
+// console.log(random.next().value)
 
 // console.log(random2.next().value)
 // console.log(random2.next().value)
 // console.log(random2.next().value)
 
-const foo = async () => {
-  const dataFromYahoo = await fetch('https://yahoo.com/?query=js')
-  console.log('dataFromYahoo', dataFromYahoo.url)
-}
+// const foo = async () => {
+//   const dataFromYahoo = await fetch('https://yahoo.com/?query=js')
+//   console.log('dataFromYahoo', dataFromYahoo.url)
+// }
+//
+// foo()
+//
+// const foo2 = newAsync(function*(){
+//   const dataFromYahoo = yield fetch('https://yahoo.com/?query=js')
+//   console.log('dataFromYahoo', dataFromYahoo.url)
+// })
+//
+// function newAsync(generationFunction) {
+//   return function() {
+//     const generator = generationFunction()
+//
+//     function resolve(next) {
+//       if(next.done) {
+//         return Promise.resolve(next.value)
+//       }
+//
+//       return Promise.resolve(next.value).then(res => {
+//         return resolve(generator.next(res))
+//       })
+//     }
+//
+//     return resolve(generator.next)
+//   }
+// }
 
-foo()
+// function fib(n) {
+//   return n <= 1 ? n : fib(n - 1) + fib(n - 2);
+// }
+//
+// console.log(fib(10))
 
-const foo2 = newAsync(function*(){
-  const dataFromYahoo = yield fetch('https://yahoo.com/?query=js')
-  console.log('dataFromYahoo', dataFromYahoo.url)
-})
+function findPosition(data, number) {
+  let low = 0
+  let high = data.length - 1
 
-function newAsync(generationFunction) {
-  return function() {
-    const generator = generationFunction()
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2)
+    const guess = data[mid]
 
-    function resolve(next) {
-      if(next.done) {
-        return Promise.resolve(next.value)
-      }
-
-      return Promise.resolve(next.value).then(res => {
-        return resolve(generator.next(res))
-      })
-    }
-
-    return resolve(generator.next)
+    if (guess === number) return mid
+    if (guess > number) high = mid - 1
+    else low = mid + 1
   }
+
+  return -1
 }
+
+console.log(findPosition([2, 5, 10, 20, 30, 90, 100, 2000, 3000], 3000)) // 0
