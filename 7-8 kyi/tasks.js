@@ -555,20 +555,20 @@
 //
 // console.log(fib(10))
 
-function findPosition(data, number) {
-  let low = 0
-  let high = data.length - 1
-
-  while (low <= high) {
-    const mid = Math.floor((low + high) / 2)
-    const guess = data[mid]
-
-    if (guess === number) return mid
-    if (guess > number) high = mid - 1
-    else low = mid + 1
-  }
-
-  return -1
-}
-
-console.log(findPosition([2, 5, 10, 20, 30, 90, 100, 2000, 3000], 3000)) // 0
+// function findPosition(data, number) {
+//   let low = 0
+//   let high = data.length - 1
+//
+//   while (low <= high) {
+//     const mid = Math.floor((low + high) / 2)
+//     const guess = data[mid]
+//
+//     if (guess === number) return mid
+//     if (guess > number) high = mid - 1
+//     else low = mid + 1
+//   }
+//
+//   return -1
+// }
+//
+// console.log(findPosition([2, 5, 10, 20, 30, 90, 100, 2000, 3000], 3000)) // 0
